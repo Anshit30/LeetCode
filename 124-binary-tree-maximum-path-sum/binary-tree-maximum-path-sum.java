@@ -21,12 +21,12 @@ class Solution {
         if(root == null){
             return 0;
         }
-        int op1 = Math.max(0,solve(root.left));
-        int op2 = Math.max(0,solve(root.right));
-        int op3 = root.val + op1 + op2;
+        int left = Math.max(0,solve(root.left)); //zero ignores the negative values
+        int right = Math.max(0,solve(root.right));
+        int currentSum = root.val + left + right;
 
-        maxSum = Math.max(maxSum,op3);
-        return root.val + Math.max(op1,op2);
+        maxSum = Math.max(maxSum,currentSum);
+        return root.val + Math.max(left,right);
 
     }
     public int maxPathSum(TreeNode root) {
